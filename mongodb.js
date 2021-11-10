@@ -2,7 +2,7 @@
 
 // const mongodb = require("mongodb");
 // const MongoClient = mongodb.MongoClient;
-// const objectID = mongodb.objectID
+// const objectId = mongodb.objectId
 
 const { MongoClient, ObjectId } = require('mongodb')
 
@@ -90,5 +90,33 @@ MongoClient.connect(
     //     }
     //     console.log(result);
     // })
+
+    //* Quering Documents
+
+    //* Find One
+    // db.collection('users').findOne({ _id: new ObjectId('618b7ff91db39da6f66c6a2c') }, (error, user) => {
+    //     if (error) {
+    //         return console.log('Unable to fetch');
+    //     }
+    //     console.log(user);
+    // })
+
+    //* Find Many 
+    //! Find function returns a cursor which again has a bunch of functions to execute
+    //* using toArray function of the returned cursor
+    db.collection('users').find({ age: 27 }).toArray((error, users) => {
+        if (error) {
+            return console.log('Unable to fetch');
+        }
+        console.log(users);
+    })
+
+    //* using count function of the returned cursor
+    db.collection('users').find({ age: 27 }).count((error, count) => {
+        if (error) {
+            return console.log('Unable to fetch');
+        }
+        console.log(count);
+    })
   }
 );

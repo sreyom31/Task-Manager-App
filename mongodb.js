@@ -4,7 +4,7 @@
 // const MongoClient = mongodb.MongoClient;
 // const objectId = mongodb.objectId
 
-const { MongoClient, ObjectId } = require('mongodb')
+const { MongoClient, ObjectId } = require("mongodb");
 
 // const id = new ObjectId()
 // console.log(id);
@@ -52,7 +52,6 @@ MongoClient.connect(
     //     console.log(result);
     // })
 
-
     //* Insert Many
     // db.collection("users").insertMany(
     //   [
@@ -72,7 +71,7 @@ MongoClient.connect(
     //     console.log(result);
     //   });
 
-    //* Insert Many Challenge 
+    //* Insert Many Challenge
     // db.collection('tasks').insertMany([
     //     {
     //         description: 'nodejs',
@@ -103,7 +102,7 @@ MongoClient.connect(
     //     console.log(user);
     // })
 
-    //* Find Many 
+    //* Find Many
     //! Find function returns a cursor which again has a bunch of functions to execute
     //* using toArray function of the returned cursor
     // db.collection('users').find({ age: 27 }).toArray((error, users) => {
@@ -138,7 +137,6 @@ MongoClient.connect(
     // }).catch(error => {
     //     console.log(error);
     // })
-    
 
     //* Update Many
     // db.collection('tasks').updateMany({
@@ -153,5 +151,30 @@ MongoClient.connect(
     //     console.log(error);
     // })
 
+    //? Delete Documents
+
+    //* Delete One
+    // db.collection("users")
+    // .deleteOne({
+    //   age: 32,
+    // })
+    // .then((result) => {
+    //   console.log(result);
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    // });
+
+    //* Delete Many
+    // db.collection("users")
+    //   .deleteMany({
+    //     age: 27,
+    //   })
+    //   .then((result) => {
+    //     console.log(result);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   }
 );

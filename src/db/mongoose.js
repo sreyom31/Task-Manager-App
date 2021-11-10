@@ -45,36 +45,38 @@ const userSchema = mongoose.Schema({
 
 const User = new mongoose.model('User', userSchema);
 
-const me = new User({
-    name: '   Sreyom   ',
-    email: 'MYEMAIL@GMAIL.COM',
-    password: 'pas'
-})
+// const me = new User({
+//     name: '   Sreyom   ',
+//     email: 'MYEMAIL@GMAIL.COM',
+//     password: 'pas'
+// })
 
-me.save().then(me => {
-    console.log(me);
-}).catch(error => {
-    console.log(error);
-})
+// me.save().then(me => {
+//     console.log(me);
+// }).catch(error => {
+//     console.log(error);
+// })
 
 const taskSchema = mongoose.Schema({
     description: {
-        type: String
+        type: String,
+        required: true,
+        trim: true
     },
     completed: {
-        type: Number
+        type: Boolean,
+        default: false
     }
 })
 
 const Task = new mongoose.model('Task', taskSchema);
 
-// const task = new Task({
-//     description: 'make new connections',
-//     completed: true
-// })
+const task = new Task({
+    description: 'd'
+})
 
-// meTask.save().then(task => {
-//     console.log(task);
-// }).catch(error => {
-//     console.log(error);
-// })
+task.save().then(task => {
+    console.log(task);
+}).catch(error => {
+    console.log(error);
+})

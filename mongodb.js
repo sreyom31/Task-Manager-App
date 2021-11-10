@@ -25,6 +25,8 @@ MongoClient.connect(
 
     const db = client.db(databaseName);
 
+    //? Inserting documents
+
     //* Insert One
     // db.collection('users').insertOne({
     //     name: 'Sreyom',
@@ -91,7 +93,7 @@ MongoClient.connect(
     //     console.log(result);
     // })
 
-    //* Quering Documents
+    //? Quering Documents
 
     //* Find One
     // db.collection('users').findOne({ _id: new ObjectId('618b7ff91db39da6f66c6a2c') }, (error, user) => {
@@ -104,19 +106,52 @@ MongoClient.connect(
     //* Find Many 
     //! Find function returns a cursor which again has a bunch of functions to execute
     //* using toArray function of the returned cursor
-    db.collection('users').find({ age: 27 }).toArray((error, users) => {
-        if (error) {
-            return console.log('Unable to fetch');
-        }
-        console.log(users);
-    })
+    // db.collection('users').find({ age: 27 }).toArray((error, users) => {
+    //     if (error) {
+    //         return console.log('Unable to fetch');
+    //     }
+    //     console.log(users);
+    // })
 
     //* using count function of the returned cursor
-    db.collection('users').find({ age: 27 }).count((error, count) => {
-        if (error) {
-            return console.log('Unable to fetch');
-        }
-        console.log(count);
-    })
+    // db.collection('users').find({ age: 27 }).count((error, count) => {
+    //     if (error) {
+    //         return console.log('Unable to fetch');
+    //     }
+    //     console.log(count);
+    // })
+
+    //? Updating documents
+
+    //* Update One
+    // db.collection('users').updateOne({
+    //     _id: new ObjectId('618b7ff91db39da6f66c6a2c')
+    // }, {
+    //     $set: {
+    //         name: 'sresaan'
+    //     },
+    //     $inc: {
+    //         age: -1
+    //     }
+    // }).then(result => {
+    //     console.log(result);
+    // }).catch(error => {
+    //     console.log(error);
+    // })
+    
+
+    //* Update Many
+    // db.collection('tasks').updateMany({
+    //     completed: false
+    // }, {
+    //     $set: {
+    //         completed: true
+    //     }
+    // }).then(result => {
+    //     console.log(result);
+    // }).catch(error => {
+    //     console.log(error);
+    // })
+
   }
 );

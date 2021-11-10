@@ -20,6 +20,17 @@ const userSchema = mongoose.Schema({
             }
         }
     },
+    password: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: [7, 'Minimum length of password must be 7 letters'],
+        validate(value) {
+            if (value.toLowercase().includes('password')) {
+                throw new Error('password cannot contain password word');
+            }
+        }
+    },
     age: {
         type: Number,
         default: 0,
@@ -36,7 +47,8 @@ const User = new mongoose.model('User', userSchema);
 
 const me = new User({
     name: '   Sreyom   ',
-    email: 'MYEMAIL@GMAIL.COM'
+    email: 'MYEMAIL@GMAIL.COM',
+    password: 'pas'
 })
 
 me.save().then(me => {

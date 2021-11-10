@@ -1,7 +1,14 @@
 // CRUD create read update delete
 
-const mongodb = require("mongodb");
-const MongoClient = mongodb.MongoClient;
+// const mongodb = require("mongodb");
+// const MongoClient = mongodb.MongoClient;
+// const objectID = mongodb.objectID
+
+const { MongoClient, ObjectId } = require('mongodb')
+
+// const id = new ObjectId()
+// console.log(id);
+// console.log(id.getTimestamp());
 
 const connectionURL = "mongodb://127.0.0.1:27017";
 const databaseName = "task-manager";
@@ -22,6 +29,19 @@ MongoClient.connect(
     // db.collection('users').insertOne({
     //     name: 'Sreyom',
     //     age: 19
+    // }, (error, result) => {
+    //     if (error) {
+    //         return console.log('Unable to insert user');
+    //     }
+
+    //     console.log(result);
+    // })
+
+    //* Attaching your own objectId
+    // db.collection('users').insertOne({
+    //     _id: id,
+    //     name: 'Vikram',
+    //     age: 26
     // }, (error, result) => {
     //     if (error) {
     //         return console.log('Unable to insert user');

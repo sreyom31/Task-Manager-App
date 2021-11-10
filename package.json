@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^4.1.4"
+    "mongodb": "^4.1.4",
+    "mongoose": "^6.0.12"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

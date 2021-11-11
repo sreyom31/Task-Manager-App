@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcryptjs')
 
 const userSchema = mongoose.Schema({
     name: {
@@ -23,11 +24,11 @@ const userSchema = mongoose.Schema({
         required: true,
         trim: true,
         minlength: [7, 'Minimum length of password must be 7 letters'],
-        // validate(value) {
-        //     if (value.toLowercase().includes('password')) {
-        //         throw new Error('password cannot contain password word');
-        //     }
-        // }
+        validate(value) {
+            if (value.toLowerCase().includes('password')) {
+                throw new Error('password cannot contain password word');
+            }
+        }
     },
     age: {
         type: Number,
@@ -39,6 +40,16 @@ const userSchema = mongoose.Schema({
         }
     },
 
+})
+
+userSchema.pre('save', async function (next) {
+    const user = this
+    
+    if (user.isModified('password')) {
+        user.password = await bcrypt.hash(user.password, 8)
+    }
+
+    next()
 })
 
 const User = new mongoose.model('User', userSchema);

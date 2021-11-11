@@ -50,6 +50,12 @@ const userSchema = mongoose.Schema({
 
 })
 
+userSchema.virtual('tasks', {
+    ref: 'Task',
+    localField: '_id',
+    foreignField: 'owner'
+})
+
 //* middleware for hiding data
 //? when res.send is called it stringify the data sent and stringify call the toJSON method by itself hence deleting the password and tokens field
 userSchema.methods.toJSON = function () {

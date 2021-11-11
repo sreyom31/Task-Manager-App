@@ -25,7 +25,9 @@ router.get('/tasks', authMiddleware, async (req, res) => {
     }
 
     try {
-        const tasks = await Task.find({owner: req.user._id, match }) 
+        const tasks = await Task.find({owner: req.user._id, match }, {}, 
+            { limit: parseInt(req.query.limit), skip: parseInt(req.query.skip) 
+        }) 
         // await req.user.populate('tasks').execPopulate() //! this also works
         // res.send(req.user.tasks) //* this is for this previous commented line
         res.send(tasks) 
@@ -76,7 +78,7 @@ router.patch('/tasks/:id', authMiddleware, async (req, res) => {
 
 router.delete('/tasks/:id', async (req, res) => {
     try {
-        const task = await Task.findByOneAndDelete({ _id: req.params.id, owner: req.user._id })
+        const task = await Task.findOneAndDelete({ _id: req.params.id, owner: req.user._id })
         if(!task) {
             return res.status(404).send('Task not found')
         }

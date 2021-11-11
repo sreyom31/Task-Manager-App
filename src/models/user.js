@@ -50,6 +50,18 @@ const userSchema = mongoose.Schema({
 
 })
 
+//* middleware for hiding data
+//? when res.send is called it stringify the data sent and stringify call the toJSON method by itself hence deleting the password and tokens field
+userSchema.methods.toJSON = function () {
+    const user = this
+    const userObject = user.toObject()
+    
+    delete userObject.password
+    delete userObject.tokens
+
+    return userObject
+}
+
 
 //* middleware for generating token
 userSchema.methods.generateAuthToken = async function () {
